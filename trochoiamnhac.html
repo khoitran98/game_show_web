@@ -151,7 +151,7 @@
   width: 0;
   height: 2px;
   background: white;
-  transition: width 0.5s cubic-bezier(1, 0, 0.5, 1.01);
+  transition: width 0.3s cubic-bezier(1, 0, 0.5, 1.01);
 }
 		
 .hero-foot{
@@ -161,11 +161,41 @@
 	position: relative;
 	top: 50px;
 }
-#nextQ{
-	height: 40px;
-    width: 200px;
-    margin-top: 30px;
+.nextQ{
+	position: absolute;
+	height: 30px;
+    width: 100px;
+    margin-top: 20px;
     font-size: 0.75rem;
+    right: 20%;
+
+}
+.nextQ_4{
+	position: absolute;
+	height: 30px;
+    width: 100px;
+    margin-top: 20px;
+    font-size: 0.75rem;
+    right: 10%;
+    top: 80%;
+}
+.prevQ{
+	position: absolute;
+	height: 30px;
+    width: 100px;
+    margin-top: 20px;
+    font-size: 0.75rem;
+    left: 20%;
+
+}
+.prevQ_4{
+	position: absolute;
+	height: 30px;
+    width: 100px;
+    margin-top: 20px;
+    font-size: 0.75rem;
+    left: 10%;
+    top: 80%;
 
 }
 .warning{
@@ -191,6 +221,7 @@
 
 
 
+
 	</style>
 </head> 
 
@@ -205,20 +236,33 @@
 		</div>
      <div class="hero-body">
      
-		<div class="container has-text-centered">
-
-
-			<div :class="theme3()"> MẤT LƯỢT </div>
-			<div id="question" :class="theme2()" > Câu thành ngữ nổi tiếng nhất của Việt Nam là ... </div>
-			<a  class="button" @click="change" v-html="zero"> </a>
-			<a  class="button" @click="change1" v-html="one"> </a>
+		<div class="container has-text-centered"> 
+			<div :class="theme3()"> MẤT LƯỢT </div> 
+			<div id="question" :class="theme2()" v-html="html"> </div>
+			<a  class="button" @click="change" v-html="zero"> </a>		
+			<a  class="button"  @click="change1" v-html="one"> </a>
 			<a  class="button" @click="change2" v-html="two"> </a>
 			<a  class="button" @click="change3" v-html="three"> </a>
 			<a  class="button" @click="change4" v-html="four"> </a>
 			<a  class="button" @click="change5" v-html="five"> </a>
 			<a  class="button" @click="change6" v-html="six"> </a>
-			<a class="button" id="button7" :class="theme1()" @click="change7" v-html="seven"> </a>	
-			<div> <a id="nextQ" class="button"> NEXT QUESTION </a>	</div>
+			<a  class="button"  @click="change7" v-html="seven" :class="theme1()"> </a>
+			<a  :class="button9()" @click="change8" v-html="eight"> </a>		
+			<a  :class="button10()" @click="change9" v-html="nine"> </a>
+			<a  :class="button11()" @click="change10" v-html="ten"> </a>
+			<a  :class="button12()" @click="change11" v-html="eleven"> </a>
+			<a  :class="button13()" @click="change12" v-html="twelve"> </a>
+			<a  :class="button14()" @click="change13" v-html="thirteen"> </a>
+
+			
+
+			<div>
+			<div> <a class="button" :class="cau4_2()"> NEXT </a>	</div> 
+			<div> <a class="button" :class="cau4_1()"> PREV </a>	</div> 
+		</div>
+
+
+			
 
 		</div>	
 		
@@ -230,10 +274,10 @@
 			<div class="content ">
 	
 			<nav>
-		<a href="#" class="active"><span> Câu 1</span></a>
-		<a href="#"><span> Câu 2 </span></a>
-		<a href="#"><span> Câu 3</span></a>
-		<a href="#"><span> Câu 4 </span></a>
+		<a class="active"><span> Câu 1</span></a>
+		<a ><span> Câu 2 </span></a>
+		<a><span> Câu 3</span></a>
+		<a><span> Câu 4 </span></a>
 		<div class="line"></div>
 	</nav>
 </div>
@@ -243,6 +287,7 @@
 
 </body>
 <script>
+	var indx = 1
 	var app = new Vue({
 		el: "#app",
 		data: {
@@ -254,43 +299,116 @@
 			five: "",
 			six: "",
 			seven: "",
+			eight: "",
+			nine: "",
+			ten: "",
+			eleven: "",
+			twelve:"",
+			thirteen:"",
 			bool: true,
 			bool2: true,
-			bool3: true,
+			bool3: false,
+			bool4: false,
+			bool5: false,
+			html: "Câu thành ngữ nổi tiếng nhất của Việt Nam là ..."
+
 				},
 		methods: {
 			change: function (){
 				app.zero = "D"
+				if (app.bool3) {
+					app.zero = "T"
+				}
+				else if (app.bool4) {
+					app.zero ="H"
+				}
+				else if (app.bool5) {
+					app.zero ="N"
+				}
 				app.bool = true
 				app.bool2 = true
 			},
 			change1: function (){
 				app.one = "I"
+				if (app.bool3) {
+					app.one = "R"
+				}
+				else if (app.bool4) {
+					app.one ="O"
+				}
+				else if (app.bool5) {
+					app.one ="G"
+				}
 				app.bool = true
 				app.bool2 = true
 			},
 			change2: function (){
 				app.two = "T"
+				if (app.bool3) {
+					app.two = "U"
+				}
+				else if (app.bool4) {
+					app.two ="C"
+				}
+				else if (app.bool5) {
+					app.two ="U"
+				}
 				app.bool = true
 				app.bool2 = true
 			},
 			change3: function (){
 				app.three = "C"
+				if (app.bool3) {
+					app.three = "N"
+				}
+				else if (app.bool4) {
+					app.three ="H"
+				}
+				else if (app.bool5) {
+					app.three ="Y"
+				}
 				app.bool = true
 				app.bool2 = true
 			},
 			change4: function (){
 				app.four = "O"
+				if (app.bool3) {
+					app.four = "G"
+				}
+				else if (app.bool4) {
+					app.four ="I"
+				}
+				else if (app.bool5) {
+					app.four ="E"
+				}
 				app.bool = true
 				app.bool2 = true
 			},
 			change5: function (){
 				app.five = "N"
+				if (app.bool3) {
+					app.five = "Q"
+				}
+				else if (app.bool4) {
+					app.five ="M"
+				}
+				else if (app.bool5) {
+					app.five ="N"
+				}
 				app.bool = true
 				app.bool2 = true
 			},
 			change6: function (){
 				app.six = "M"
+				if (app.bool3) {
+					app.six = "U"
+				}
+				else if (app.bool4) {
+					app.six ="I"
+				}
+				else if (app.bool5) {
+					app.six ="P"
+				}
 				app.bool = true
 				app.bool2 = true
 			},
@@ -298,14 +416,71 @@
 				if (app.seven != "X"){
 					app.bool = false
 				}
+				else if (app.bool3) {
+					app.seven = "O"
+				}
+				else if (app.bool4) {
+					app.seven ="N"
+				}
+				else if (app.bool5) {
+					app.seven ="H"
+				}
 				app.seven = "X"	
 				app.bool2 = false		
+			},
+			change8: function (){
+				if (app.bool3) {
+					app.eight = "C"
+				}
+				else if (app.bool4) {
+					app.eight ="H"
+				}
+				else if (app.bool5) {
+					app.eight ="U"
+				}
+				app.bool = true
+				app.bool2 = true
+			},
+			change9: function (){
+			 	if (app.bool5) {
+					app.nine ="T"
+				}
+				
+				app.bool = true
+				app.bool2 = true
+			},
+			change10: function (){
+				if (app.bool5) {
+					app.ten ="R"
+				}
+				app.bool = true
+				app.bool2 = true
+			},
+			change11: function (){
+				if (app.bool5) {
+					app.eleven ="O"
+				}
+				app.bool = true
+				app.bool2 = true
+			},
+			change12: function (){
+				if (app.bool5) {
+					app.twelve ="N"
+				}
+				app.bool = true
+				app.bool2 = true
+			},
+			change13: function (){
+				if (app.bool5) {
+					app.thirteen ="G"
+				}
+				app.bool = true
+				app.bool2 = true
 			},
 			theme: function(){
 				return {
 					 "is-link": (this.bool),
 					 "red-bckgrnd": (!this.bool)
-
 				}
 			},
 			theme2: function(){
@@ -324,14 +499,129 @@
 					"warning is-link": (this.bool),
 					"appear red-bckgrnd": (!this.bool)
 				}
+			},
+			cau1: function(){
+				if (indx < 2) {
+					return true
+				}
+				return false
+			},
+			cau2: function(){
+				if (indx == 2) {
+					return true
+				}
+				return false
+			},
+			cau3: function(){
+				if (indx == 3) {
+					return true
+				}
+				return false
+			},
+			cau4: function(){
+				if (indx >= 4) {
+					return true
+				}
+				return false
+			},
+			button9: function(){
+				return{
+					"button": (this.bool3 || this.bool4 || this.bool5)
+				}
+			},
+			button10: function(){
+				return{
+					"button": (this.bool5)
+				}
+			},
+			button11: function(){
+				return{
+					"button": (this.bool5)
+				}
+			},
+			button12: function(){
+				return{
+					"button": (this.bool5)
+				}
+			},
+			button13: function(){
+				return{
+					"button": (this.bool5)
+				}
+			},
+			button14: function(){
+				return{
+					"button": (this.bool5)
+				}
+			},
+			cau4_1: function(){
+				return{
+					"prevQ": (!this.bool5),
+					"prevQ_4": (this.bool5)
+				}
+			},
+			cau4_2: function(){
+				return{
+					"nextQ": (!this.bool5),
+					"nextQ_4": (this.bool5)
+				}
+			},
+			changeQuestion: function(){
+				if (this.bool1) {
+					this.html = "Câu thành ngữ nổi tiếng nhất của Việt Nam là ..."
+				}
+
+				else if (this.bool3) {
+					this.html = " Quần đảo Hoàng Sa và Trường Sa thuộc nước nào ..."
+				}
+				else if (this.bool4) {
+					this.html = " Lãnh tụ vĩ đại của Việt Nam là ai ..."
+				}
+				else if (this.bool5) {
+					this.html = " Chủ tịch nước hiện tại là ai ..."
+				}
 			}
 		}
 	})
 	$(document).ready(function() {
 	$('nav a').click(function() {
-		$("a").removeClass('active');
+		app.zero = app.one = app.two = app.three = app.four = app.five = app.six = app.seven = app.eight = app.nine = app.ten = app.eleven = app.twelve = app.thirteen = "";
+		$(' nav a').removeClass('active');
 		var index = $(this).index('nav a') + 1;
+		indx = index;
+		app.bool = app.bool2 = true;
+		app.bool3 = app.cau2();
+		app.bool4 = app.cau3();
+		app.bool5 = app.cau4();
+		app.changeQuestion();
 		$("nav a:nth-child(-n+"+index+")").addClass('active');
+	});
+	$(".nextQ").click(function() {
+		app.zero = app.one = app.two = app.three = app.four = app.five = app.six = app.seven = app.eight = app.nine = app.ten = app.eleven = app.twelve = app.thirteen = "";
+		indx++;
+		if (indx > 4) {
+			indx = 4;
+		}
+		app.bool = app.bool2 = true;
+		app.bool3 = app.cau2();
+		app.bool4 = app.cau3();
+		app.bool5 = app.cau4();
+		app.changeQuestion();
+		$("nav a:nth-child(-n + "+ indx+")").addClass('active');
+	});
+	$(".prevQ").click(function() {
+		app.zero = app.one = app.two = app.three = app.four = app.five = app.six = app.seven = app.eight = app.nine = app.ten = app.eleven = app.twelve = app.thirteen = "";
+		indx--;
+		if (indx < 1) {
+			indx = 1;
+		}
+		app.bool = app.bool2 = true;
+		app.bool3 = app.cau2();
+		app.bool4 = app.cau3();
+		app.bool5 = app.cau4();
+		app.changeQuestion();
+		$(' nav a').removeClass('active');
+		$("nav a:nth-child(-n + "+ indx+")").addClass('active');
 	});
 });
 $(window).load(function() {
