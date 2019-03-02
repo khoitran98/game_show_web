@@ -133,13 +133,14 @@
 .content  nav a:first-child.active ~ .line {
   width: 0;
 }
+/*
 .content  nav a:nth-child(2).active ~ .line {
   width: 34%;
 }
 .content  nav a:nth-child(3).active ~ .line {
   width: 66%;
-}
-.content  nav a:nth-child(4).active ~ .line {
+} */
+.content  nav a:nth-child(2).active ~ .line {
   width: 100%;
 }
 .content  nav .line {
@@ -218,6 +219,24 @@
 	position: relative;
 	top: 20px;
 }
+#answer {
+	position: absolute;
+	right: 2%;
+	top: 2%;
+	height: 50px;
+    width: 100px;
+    margin-top: 20px;
+    font-size: 1rem;
+
+}
+.disappear {
+	display: none;
+}
+.answerAppear {
+	display: block;
+
+}
+
 
 
 
@@ -232,21 +251,26 @@
 			<div class="container">
 				<h1 class="title   has-text-centered"> TRO CHOI </h1>
 				<p class="subtitle has-text-centered"> Am Nhac</p>
+				
 			</div>
+			<a id="answer"  class="button"  > Đáp Án </a>
 		</div>
      <div class="hero-body">
      
 		<div class="container has-text-centered"> 
-			<div :class="theme3()"> MẤT LƯỢT </div> 
+			<div  :class="theme3()"> MẤT LƯỢT </div> 
+			
+			<div  :class="answerTheme()"> <img id="myImage" width="350" height="200" src="anh da den.jpeg"> </div>
 			<div id="question" :class="theme2()" v-html="html"> </div>
 			<a  class="button" @click="change" v-html="zero"> </a>		
 			<a  class="button"  @click="change1" v-html="one"> </a>
-			<a  class="button" @click="change2" v-html="two"> </a>
-			<a  class="button" @click="change3" v-html="three"> </a>
-			<a  class="button" @click="change4" v-html="four"> </a>
-			<a  class="button" @click="change5" v-html="five"> </a>
-			<a  class="button" @click="change6" v-html="six"> </a>
-			<a  class="button"  @click="change7" v-html="seven" :class="theme1()"> </a>
+			<a  class="button" @click="change2" :class="theme1()" v-html="two"> </a>
+			<a  class="button" @click="change3" :class="theme4()" v-html="three"> </a>
+			<a  class="button" @click="change4" :class="theme5()" v-html="four"> </a>
+			<a  class="button" @click="change5" :class="theme6()" v-html="five"> </a>
+			<a  class="button" @click="change6"  v-html="six"> </a>
+			<!--<a  class="button"  @click="change7" v-html="seven" "> </a>
+			
 			<a  :class="button9()" @click="change8" v-html="eight"> </a>		
 			<a  :class="button10()" @click="change9" v-html="nine"> </a>
 			<a  :class="button11()" @click="change10" v-html="ten"> </a>
@@ -255,7 +279,7 @@
 			<a  :class="button14()" @click="change13" v-html="thirteen"> </a>
 
 			
-
+-->
 			<div>
 			<div> <a class="button" :class="cau4_2()"> NEXT </a>	</div> 
 			<div> <a class="button" :class="cau4_1()"> PREV </a>	</div> 
@@ -276,8 +300,8 @@
 			<nav>
 		<a class="active"><span> Câu 1</span></a>
 		<a ><span> Câu 2 </span></a>
-		<a><span> Câu 3</span></a>
-		<a><span> Câu 4 </span></a>
+	<!--	<a><span> Câu 3</span></a>
+		<a><span> Câu 4 </span></a> -->
 		<div class="line"></div>
 	</nav>
 </div>
@@ -306,10 +330,17 @@
 			twelve:"",
 			thirteen:"",
 			bool: true,
+			bool1: true,
 			bool2: true,
 			bool3: false,
 			bool4: false,
-			bool5: false,
+			bool5: false,  
+			bol1: false,
+			bol2: false,
+			bol3: false,
+			bol4: false,
+			answer: false,
+			
 			html: "Câu thành ngữ nổi tiếng nhất của Việt Nam là ..."
 
 				},
@@ -319,112 +350,122 @@
 				if (app.bool3) {
 					app.zero = "T"
 				}
-				else if (app.bool4) {
-					app.zero ="H"
-				}
-				else if (app.bool5) {
-					app.zero ="N"
-				}
+				
 				app.bool = true
 				app.bool2 = true
+				app.bol1 = false
+				app.bol2 = false
+				app.bol3 = false
+				app.bol4 = false
 			},
 			change1: function (){
 				app.one = "I"
 				if (app.bool3) {
 					app.one = "R"
 				}
-				else if (app.bool4) {
-					app.one ="O"
-				}
-				else if (app.bool5) {
-					app.one ="G"
-				}
+				
 				app.bool = true
 				app.bool2 = true
+				app.bol1 = false
+				app.bol2 = false
+				app.bol3 = false
+				app.bol4 = false
 			},
 			change2: function (){
-				app.two = "T"
-				if (app.bool3) {
-					app.two = "U"
+				if (app.two != "X" && app.cau1()) {
+					app.bool = false
 				}
-				else if (app.bool4) {
-					app.two ="C"
+				if (app.cau1()) {
+					app.two = "X"
+					app.bool2 = false
+					app.bol1 = true
+			    }
+				else if (app.cau2()) {
+					app.two = "T"
+					app.bool = true
+					app.bool2 = true
+					app.bol1 = false
+				app.bol2 = false
+				app.bol3 = false
+				app.bol4 = false
 				}
-				else if (app.bool5) {
-					app.two ="U"
-				}
-				app.bool = true
-				app.bool2 = true
+				
 			},
 			change3: function (){
-				app.three = "C"
-				if (app.bool3) {
-					app.three = "N"
+				if (app.three != "X" && app.cau2()) {
+					app.bool = false
 				}
-				else if (app.bool4) {
-					app.three ="H"
+				if (app.cau2()) {
+					app.three = "X"
+					app.bool2 = false
+					app.bol2 = true
+			    }
+				else if (app.cau1()) {
+					app.three = "C"
+					app.bool = true
+					app.bool2 = true
+					app.bol1 = false
+				app.bol2 = false
+				app.bol3 = false
+				app.bol4 = false
 				}
-				else if (app.bool5) {
-					app.three ="Y"
-				}
-				app.bool = true
-				app.bool2 = true
 			},
 			change4: function (){
-				app.four = "O"
-				if (app.bool3) {
-					app.four = "G"
+				if (app.four != "X" && app.cau2()) {
+					app.bool = false
 				}
-				else if (app.bool4) {
-					app.four ="I"
+				if (app.cau2()) {
+					app.four = "X"
+					app.bool2 = false
+					app.bol3 = true
+			    }
+				else if (app.cau1()) {
+					app.four = "C"
+					app.bool = true
+					app.bool2 = true
+					app.bol1 = false
+				app.bol2 = false
+				app.bol3 = false
+				app.bol4 = false
 				}
-				else if (app.bool5) {
-					app.four ="E"
-				}
-				app.bool = true
-				app.bool2 = true
 			},
 			change5: function (){
-				app.five = "N"
-				if (app.bool3) {
-					app.five = "Q"
+				if (app.five != "X" && app.cau1()) {
+					app.bool = false
 				}
-				else if (app.bool4) {
-					app.five ="M"
+				if (app.cau1()) {
+					app.five = "X"
+					app.bool2 = false
+					app.bol4 = true
+			    }
+				else if (app.cau2()) {
+					app.five = "T"
+					app.bool = true
+					app.bool2 = true
+					app.bol1 = false
+				app.bol2 = false
+				app.bol3 = false
+				app.bol4 = false
 				}
-				else if (app.bool5) {
-					app.five ="N"
-				}
-				app.bool = true
-				app.bool2 = true
 			},
 			change6: function (){
 				app.six = "M"
 				if (app.bool3) {
 					app.six = "U"
 				}
-				else if (app.bool4) {
-					app.six ="I"
-				}
-				else if (app.bool5) {
-					app.six ="P"
-				}
+				
 				app.bool = true
 				app.bool2 = true
+				app.bol1 = false
+				app.bol2 = false
+				app.bol3 = false
+				app.bol4 = false
 			},
 			change7: function (){
 				if (app.seven != "X"){
 					app.bool = false
 				}
-				else if (app.bool3) {
-					app.seven = "O"
-				}
-				else if (app.bool4) {
-					app.seven ="N"
-				}
-				else if (app.bool5) {
-					app.seven ="H"
-				}
+								
 				app.seven = "X"	
 				app.bool2 = false		
 			},
@@ -477,6 +518,18 @@
 				app.bool = true
 				app.bool2 = true
 			},
+			/*answerC: function (){
+				if (app.answer) {
+					app.answer = false;
+				}
+				else app.answer = true;
+				if (app.cau1()) {
+				 document.getElementById('myImage').src='anh da den.jpeg'
+				}
+				else if (app.cau2()) {
+				 document.getElementById('myImage').src='anh_da_den_2.jpeg'
+				}
+			}, */
 			theme: function(){
 				return {
 					 "is-link": (this.bool),
@@ -485,24 +538,49 @@
 			},
 			theme2: function(){
 				return{
-					"notification is-link": (this.bool),
+					"notification  is-link": (this.bool),
 					"notification red-bckgrnd": (!this.bool)
 				}
 			},
 			theme1: function(){
 				return{
-					"vibrate": (!this.bool2)					
+					"vibrate": ( this.bol1)					
+				}
+			},
+			theme4: function(){
+				return{
+					"vibrate": ( this.bol2)					
+				}
+			},
+			theme5: function(){
+				return{
+					"vibrate": ( this.bol3)					
+				}
+			},
+			theme6: function(){
+				return{
+					"vibrate": (this.bol4)					
 				}
 			},
 			theme3: function(){
 				return{
-					"warning is-link": (this.bool),
+					"warning is-link": (this.bool && !this.answer),
+					"warning disappear is-link": (this.bool && this.answer),
 					"appear red-bckgrnd": (!this.bool)
 				}
 			},
+			answerTheme: function () {
+				return {
+					"disappear": (!this.answer),
+					"answerAppear": (this.answer)
+				}
+			},
+
+			
 			cau1: function(){
 				if (indx < 2) {
 					return true
+					
 				}
 				return false
 			},
@@ -557,29 +635,30 @@
 			cau4_1: function(){
 				return{
 					"prevQ": (!this.bool5),
-					"prevQ_4": (this.bool5)
+					
 				}
 			},
 			cau4_2: function(){
 				return{
 					"nextQ": (!this.bool5),
-					"nextQ_4": (this.bool5)
+					
 				}
 			},
 			changeQuestion: function(){
-				if (this.bool1) {
+				if (app.cau1()) {
 					this.html = "Câu thành ngữ nổi tiếng nhất của Việt Nam là ..."
 				}
 
 				else if (this.bool3) {
 					this.html = " Quần đảo Hoàng Sa và Trường Sa thuộc nước nào ..."
 				}
+				/*
 				else if (this.bool4) {
 					this.html = " Lãnh tụ vĩ đại của Việt Nam là ai ..."
 				}
 				else if (this.bool5) {
 					this.html = " Chủ tịch nước hiện tại là ai ..."
-				}
+				} */
 			}
 		}
 	})
@@ -599,14 +678,15 @@
 	$(".nextQ").click(function() {
 		app.zero = app.one = app.two = app.three = app.four = app.five = app.six = app.seven = app.eight = app.nine = app.ten = app.eleven = app.twelve = app.thirteen = "";
 		indx++;
-		if (indx > 4) {
-			indx = 4;
+		if (indx > 2) {
+			indx = 2;
 		}
 		app.bool = app.bool2 = true;
 		app.bool3 = app.cau2();
 		app.bool4 = app.cau3();
 		app.bool5 = app.cau4();
 		app.changeQuestion();
+		app.answer = false;
 		$("nav a:nth-child(-n + "+ indx+")").addClass('active');
 	});
 	$(".prevQ").click(function() {
@@ -620,8 +700,25 @@
 		app.bool4 = app.cau3();
 		app.bool5 = app.cau4();
 		app.changeQuestion();
+		app.answer = false;
 		$(' nav a').removeClass('active');
 		$("nav a:nth-child(-n + "+ indx+")").addClass('active');
+	});
+	$("#answer").click(function() {
+		if (app.answer) {
+					app.answer = false;
+		}
+				else app.answer = true;
+				if (app.cau1()) {
+				 document.getElementById('myImage').src="anh da den.jpeg";
+				 
+				
+				}
+				else if (app.cau2()) {
+				 document.getElementById('myImage').src='anh_da_den_2.jpeg';
+
+				}
+		 
 	});
 });
 $(window).load(function() {
