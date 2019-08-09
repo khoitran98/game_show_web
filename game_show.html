@@ -2,289 +2,254 @@
 <!dockype html>
 <html>
 <head>
-	<meta charset ="utf-8">
+<meta charset ="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-   
- <!--<link rel="stylesheet" href="debug.css"> -->
+ 	<!--<link rel="stylesheet" href="debug.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <style>
-
-    	.button {
-    		border-radius: 12.5px;
-    		height: 100px;
-    		width: 100px;
-    		font-size: 1.875rem;
-    		margin-left: 1px;
-    		margin-right: 1px;
-    		margin-bottom: : 10px;
-    	}
-    	.button:hover {
-    		transition: transform 500ms;
-			transform: scale(1.05);
-    	}
-    	.title {
-    		font-family: 'Monoton', cursive;
-    		font-size: 3.8rem;
-    		padding-top: 10px;
-    		padding-bottom: 0px;
-    	}
-    	.subtitle {
-    		font-family: 'Monoton', cursive;
-    		font-size: 2.8rem;
-    		line-height: 1;
-    	}
-    	.vibrate {
-  			animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-  			transform: translate3d(0, 0, 0);
-  			backface-visibility: hidden;
-  			perspective: 1000px;
-		}
-		#question {
-			font-size: 1.5rem;
-		}
-		@keyframes shake {
-  		10%, 90% {
-    	transform: translate3d(-1px, 0, 0);
-  		}
-  
-  		20%, 80% {
-   	 	transform: translate3d(2px, 0, 0);
-  		}
-
-  		30%, 50%, 70% {
-    	transform: translate3d(-4px, 0, 0);
-  		}
-
-  		40%, 60% {
-    	transform: translate3d(4px, 0, 0);
-  		}
-		}
-
-		.red-bckgrnd{
-			background-color: #FF0000;
-		}
-		.content  {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-
-}
-
-
-.content nav {
-  position: relative;
-  width: 600px;
-  margin: 0 auto auto;
-  display: flex;
-  justify-content: space-between;
-}
-.content  nav a {
-  position: relative;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: white;
-  text-align: center;
-}
-.content  nav a span {
- 
-  position: absolute;
-  left: 50%;
-  width: 80px;
-  margin-top: 20px;
-  -webkit-transform: translateX(-50%);
-  
-}
-.content  nav a.active > span {
-  color: white;
-  opacity: 1;
-}
-.content  nav a:after {
-  content: '';
-  position: absolute;
-  width: 80px;
-  height: 60px;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-.content nav a:before {
-  content: '';
-  z-index: 100;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  margin: auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 4px white;
-  background: #03A9F4;
-  transition: box-shadow 0.3s cubic-bezier(0.75, 0, 0.24, 1);
-}
-.content  nav a:not(.active):hover:before {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 10px white;
-}
-.content nav a.active:before {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 12px white;
-}
-.content  nav a:first-child.active ~ .line {
-  width: 0;
-}
-.content  nav a:nth-child(2).active ~ .line {
-  width: 34%;
-}
-.content  nav a:nth-child(3).active ~ .line {
-  width: 66%;
-}
-.content  nav a:nth-child(4).active ~ .line {
-  width: 100%;
-}
-.content  nav .line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  width: 0;
-  height: 2px;
-  background: white;
-  transition: width 0.3s cubic-bezier(1, 0, 0.5, 1.01);
-}
-		
-.hero-foot{
-	height: 100px;
-}
-.hero-body .container{
+	.button {
+		border-radius: 12.5px;
+		height: 100px;
+		width: 100px;
+		font-size: 1.875rem;
+		margin-left: 1px;
+		margin-right: 1px;
+		margin-bottom: 10px;
+	}
+	.button:hover {
+		transition: transform 500ms;
+		transform: scale(1.05);
+	}
+	.title {
+		font-family: 'Monoton', cursive;
+		font-size: 3.8rem;
+		padding-top: 10px;
+		padding-bottom: 0px;
+	}
+	.subtitle {
+		font-family: 'Monoton', cursive;
+		font-size: 2.8rem;
+		line-height: 1;
+	}
+	.vibrate {
+		animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+		transform: translate3d(0, 0, 0);
+		backface-visibility: hidden;
+		perspective: 1000px;
+	}
+	#question {
+		font-size: 1.5rem;
+	}
+	@keyframes shake {
+	10%, 90% {
+	transform: translate3d(-1px, 0, 0);
+	}
+	20%, 80% {
+	transform: translate3d(2px, 0, 0);
+	}
+	30%, 50%, 70% {
+	transform: translate3d(-4px, 0, 0);
+	}
+	40%, 60% {
+	transform: translate3d(4px, 0, 0);
+	}
+	}
+	.red-bckgrnd{
+		background-color: #FF0000;
+	}
+	.content  {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+	.content nav {
 	position: relative;
-	top: 50px;
-}
-.nextQ{
-	position: absolute;
-	height: 30px;
-    width: 100px;
-    margin-top: 20px;
-    font-size: 0.75rem;
-    right: 20%;
-
-}
-.nextQ_4{
-	position: absolute;
-	height: 30px;
-    width: 100px;
-    margin-top: 20px;
-    font-size: 0.75rem;
-    right: 10%;
-    top: 80%;
-}
-.prevQ{
-	position: absolute;
-	height: 30px;
-    width: 100px;
-    margin-top: 20px;
-    font-size: 0.75rem;
-    left: 20%;
-
-}
-.prevQ_4{
-	position: absolute;
-	height: 30px;
-    width: 100px;
-    margin-top: 20px;
-    font-size: 0.75rem;
-    left: 10%;
-    top: 80%;
-
-}
-.warning{
+	width: 600px;
+	margin: 0 auto auto;
+	display: flex;
+	justify-content: space-between;
+	}
+	.content  nav a {
 	position: relative;
-	font-size: 5rem;
-	text-shadow: 2px 2px 2px black;
-	bottom: 70px;
-	visibility: hidden;
-}
-.appear {
-	font-size: 5rem;
-	bottom: 60px;
-	position: relative;
-	text-shadow: 2px 2px 2px black;
-	visibility: visible;
-	color: black;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+	color: white;
+	text-align: center;
+	}
+	.content  nav a span {
+	position: absolute;
+	left: 50%;
+	width: 80px;
+	margin-top: 20px;
+	-webkit-transform: translateX(-50%);
+	}
+	.content  nav a.active > span {
+	color: white;
+	opacity: 1;
+	}
+	.content  nav a:after {
+	content: '';
+	position: absolute;
+	width: 80px;
+	height: 60px;
+	-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+	}
+	.content nav a:before {
+	content: '';
+	z-index: 100;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	margin: auto;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 4px white;
+	background: #03A9F4;
+	transition: box-shadow 0.3s cubic-bezier(0.75, 0, 0.24, 1);
+	}
+	.content  nav a:not(.active):hover:before {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 10px white;
+	}
+	.content nav a.active:before {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 12px white;
+	}
+	.content  nav a:first-child.active ~ .line {
+	width: 0;
+	}
+	.content  nav a:nth-child(2).active ~ .line {
+	width: 34%;
+	}
+	.content  nav a:nth-child(3).active ~ .line {
+	width: 66%;
+	}
+	.content  nav a:nth-child(4).active ~ .line {
+	width: 100%;
+	}
+	.content  nav .line {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	width: 0;
+	height: 2px;
+	background: white;
+	transition: width 0.3s cubic-bezier(1, 0, 0.5, 1.01);
+	}	
+	.hero-foot{
+		height: 100px;
+	}
+	.hero-body .container{
+		position: relative;
+		top: 50px;
+	}
+	.nextQ{
+		position: absolute;
+		height: 30px;
+		width: 100px;
+		margin-top: 20px;
+		font-size: 0.75rem;
+		right: 20%;
+	}
+	.nextQ_4{
+		position: absolute;
+		height: 30px;
+		width: 100px;
+		margin-top: 20px;
+		font-size: 0.75rem;
+		right: 10%;
+		top: 80%;
+	}
+	.prevQ{
+		position: absolute;
+		height: 30px;
+		width: 100px;
+		margin-top: 20px;
+		font-size: 0.75rem;
+		left: 20%;
 
-}
-.hero-foot .container{
-	position: relative;
-	top: 20px;
-}
-
-
-
-
+	}
+	.prevQ_4{
+		position: absolute;
+		height: 30px;
+		width: 100px;
+		margin-top: 20px;
+		font-size: 0.75rem;
+		left: 10%;
+		top: 80%;
+	}
+	.warning{
+		position: relative;
+		font-size: 5rem;
+		text-shadow: 2px 2px 2px black;
+		bottom: 70px;
+		visibility: hidden;
+	}
+	.appear {
+		font-size: 5rem;
+		bottom: 60px;
+		position: relative;
+		text-shadow: 2px 2px 2px black;
+		visibility: visible;
+		color: black;
+	}
+	.hero-foot .container{
+		position: relative;
+		top: 20px;
+	}
 	</style>
 </head> 
-
 <body>
 	<section id="app" class="hero is-fullheight" :class="theme()">
-		
 		<div class = "hero-head">
 			<div class="container">
 				<h1 class="title   has-text-centered"> TRO CHOI </h1>
 				<p class="subtitle has-text-centered"> Am Nhac</p>
 			</div>
 		</div>
-     <div class="hero-body">
-     
-		<div class="container has-text-centered"> 
-			<div :class="theme3()"> MẤT LƯỢT </div> 
-			<div id="question" :class="theme2()" v-html="html"> </div>
-			<a  class="button" @click="change" v-html="zero"> </a>		
-			<a  class="button"  @click="change1" v-html="one"> </a>
-			<a  class="button" @click="change2" v-html="two"> </a>
-			<a  class="button" @click="change3" v-html="three"> </a>
-			<a  class="button" @click="change4" v-html="four"> </a>
-			<a  class="button" @click="change5" v-html="five"> </a>
-			<a  class="button" @click="change6" v-html="six"> </a>
-			<a  class="button"  @click="change7" v-html="seven" :class="theme1()"> </a>
-			<a  :class="button9()" @click="change8" v-html="eight"> </a>		
-			<a  :class="button10()" @click="change9" v-html="nine"> </a>
-			<a  :class="button11()" @click="change10" v-html="ten"> </a>
-			<a  :class="button12()" @click="change11" v-html="eleven"> </a>
-			<a  :class="button13()" @click="change12" v-html="twelve"> </a>
-			<a  :class="button14()" @click="change13" v-html="thirteen"> </a>
-
-			
-
-			<div>
-			<div> <a class="button" :class="cau4_2()"> NEXT </a>	</div> 
-			<div> <a class="button" :class="cau4_1()"> PREV </a>	</div> 
+		<div class="hero-body">
+			<div class="container has-text-centered"> 
+				<div :class="theme3()"> MẤT LƯỢT </div> 
+				<div id="question" :class="theme2()" v-html="html"> </div>
+				<a  class="button" @click="change" v-html="zero"> </a>		
+				<a  class="button"  @click="change1" v-html="one"> </a>
+				<a  class="button" @click="change2" v-html="two"> </a>
+				<a  class="button" @click="change3" v-html="three"> </a>
+				<a  class="button" @click="change4" v-html="four"> </a>
+				<a  class="button" @click="change5" v-html="five"> </a>
+				<a  class="button" @click="change6" v-html="six"> </a>
+				<a  class="button"  @click="change7" v-html="seven" :class="theme1()"> </a>
+				<a  :class="button9()" @click="change8" v-html="eight"> </a>		
+				<a  :class="button10()" @click="change9" v-html="nine"> </a>
+				<a  :class="button11()" @click="change10" v-html="ten"> </a>
+				<a  :class="button12()" @click="change11" v-html="eleven"> </a>
+				<a  :class="button13()" @click="change12" v-html="twelve"> </a>
+				<a  :class="button14()" @click="change13" v-html="thirteen"> </a>
+				<div>
+					<div> <a class="button" :class="cau4_2()"> NEXT </a> </div> 
+					<div> <a class="button" :class="cau4_1()"> PREV </a> </div> 
+				</div>
+			</div>		
 		</div>
-
-
-			
-
-		</div>	
-		
-		
-		
-	</div>
-	<div class="hero-foot">
-		<div class="container">
-			<div class="content ">
-	
-			<nav>
-		<a class="active"><span> Câu 1</span></a>
-		<a ><span> Câu 2 </span></a>
-		<a><span> Câu 3</span></a>
-		<a><span> Câu 4 </span></a>
-		<div class="line"></div>
-	</nav>
-</div>
+		<div class="hero-foot">
+			<div class="container">
+				<div class="content ">
+					<nav>
+						<a class="active"><span> Câu 1</span></a>
+						<a ><span> Câu 2 </span></a>
+						<a><span> Câu 3</span></a>
+						<a><span> Câu 4 </span></a>
+						<div class="line"></div>
+					</nav>
+				</div>
+			</div>
 		</div>
-	</div>
 	</section>
-
 </body>
 <script>
 	var indx = 1
@@ -624,10 +589,8 @@
 		$("nav a:nth-child(-n + "+ indx+")").addClass('active');
 	});
 });
-$(window).load(function() {
-  $(".content").addClass("load");
-});
-
-
+	$(window).load(function() {
+		$(".content").addClass("load");
+	});
 </script>
 </html>
